@@ -8,6 +8,9 @@ const StartGameScreen = props => {
   const [enteredValue, setEnteredValue] = useState("");
 
   // handleInput
+  const handleInput = inputText => {
+    setEnteredValue(inputText.replace(/[^0-9]/, ""));
+  };
 
   return (
     <View style={styles.screen}>
@@ -17,16 +20,11 @@ const StartGameScreen = props => {
           <Text>Select a Number</Text>
           <Input
             style={styles.input}
-            keyboardType="number-pad"
             maxLength={5}
             blurOnSumit
-          />
-
-          <Input
-            style={styles.input1}
-            keyboardType="number-pad"
-            maxLength={5}
-            blurOnSumit
+            keyboard="number-pad"
+            onChangeText={handleInput}
+            value={enteredValue}
           />
 
           <View style={styles.buttonContainer}>
